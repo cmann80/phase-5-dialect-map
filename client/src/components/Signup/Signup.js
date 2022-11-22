@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from "react"
 
 function Signup(setUser){
     const [username, setUsername] = useState("");
@@ -7,8 +8,35 @@ function Signup(setUser){
     const [displayName, setDisplayName] = useState("");
     const [errors, setErrors] = useState([]);
 
+
     return(
-        <h1>signup</h1>
+        <div className="login-container">
+        <form onSubmit={console.log("submitted")}>
+            <label htmlFor="username">Username:</label>
+            <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <label htmlFor="password_confirmation">Confirm Password:</label>
+            <input
+                type="password"
+                id="password_confirmation"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
     )
 }
 
