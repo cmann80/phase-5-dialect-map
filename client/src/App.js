@@ -16,8 +16,8 @@ function App() {
       <BrowserRouter>
       <NavBar user={user} setUser={setUser} className="navbar"/>
           <Routes>
-            <Route path= "/" component={<Home/>}/>
-            <Route path="signup" component={<Signup setUser={setUser}/>}/>
+            <Route path= "/" element={<Home/>}/>
+            <Route path="signup" element={<Signup setUser={setUser}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>

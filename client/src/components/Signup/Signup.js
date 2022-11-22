@@ -11,7 +11,7 @@ function Signup(setUser){
 
     return(
         <div className="login-container">
-        <form onSubmit={console.log("submitted")}>
+        <form >
             <label htmlFor="username">Username:</label>
             <input
                 type="text"
