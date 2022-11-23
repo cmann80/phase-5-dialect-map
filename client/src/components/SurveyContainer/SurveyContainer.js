@@ -6,14 +6,15 @@ import "./SurveyContainer.css"
 function SurveyContainer({survey}){
 
 
-// const renderSurvey = () =>{
-//     survey.entries(question =>{
-//         console.log(question)
-//     })
+const renderSurvey = () =>{
+    
+    for (const [key, value] of Object.entries(survey)) {
+        console.log(`${key}: ${value}`)
+    }
 
-//     }
+    }
 
-// renderSurvey()
+renderSurvey()
 
 const [currentPage, setCurrentPage] = useState(1)
 
