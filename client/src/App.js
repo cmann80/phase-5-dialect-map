@@ -3,7 +3,9 @@ import Signup from './components/Signup/Signup';
 import NavBar from "./components/NavBar/NavBar"
 import Home from "./components/Home/Home"
 import Login from "./components/Login/Login"
-import { Route, Routes, BrowserRouter, Link} from 'react-router-dom'
+import Profile from "./components/Profile/Profile"
+import SurveyContainer from "./components/SurveyContainer/SurveyContainer"
+import { Route, Routes, BrowserRouter} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import React from 'react';
 
@@ -19,8 +21,10 @@ function App() {
       <NavBar user={user} setUser={setUser} className="navbar"/>
           <Routes>
             <Route path= "/" element={<Home/>}/>
-            <Route path="signup" element={<Signup setUser={setUser}/>}/>
-            <Route path="login" element={<Login setUser={setUser}/>}/>
+            <Route path="/signup" element={<Signup setUser={setUser}/>}/>
+            <Route path="/login" element={<Login setUser={setUser}/>}/>
+            <Route path="/survey" element={<SurveyContainer user={user}/>}/>
+            <Route path="/profile" element={<Profile user={user}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>
