@@ -2,6 +2,7 @@ import './App.css';
 import Signup from './components/Signup/Signup';
 import NavBar from "./components/NavBar/NavBar"
 import Home from "./components/Home/Home"
+import Login from "./components/Login/Login"
 import { Route, Routes, BrowserRouter, Link} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import React from 'react';
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path= "/" element={<Home/>}/>
             <Route path="signup" element={<Signup setUser={setUser}/>}/>
+            <Route path="login" element={<Login setUser={setUser}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>

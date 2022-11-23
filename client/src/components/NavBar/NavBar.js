@@ -15,13 +15,29 @@ function NavBar ({ user, setUser }) {
         });
     }
 
+const loginSwitch = () => {
+    if(user){
+        return (<span>
+            <h1>Welcome, {user.username}!</h1>
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        </span>)
+        }
+    else
+        {return(
+        <span>
+            <Link to="signup">Signup</Link>
+            <Link to="login">Login</Link>
+        </span>
+        )
+    }
+
+}
 
     return (
         <div className='nav'>
             <h1>NavBar</h1>
-            <Link to="signup">Signup</Link>
             <Link to="/">Home</Link>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            {loginSwitch()}
         </div>
     )
 }
