@@ -20,7 +20,7 @@ function Login ({ setUser }) {
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
-                    navigate("/home")
+                    navigate("/")
                 })
                 } else {
                 res.json().then((err) => setErrors(err.errors))
