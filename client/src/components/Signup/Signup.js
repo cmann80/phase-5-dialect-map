@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import {useHistory} from "react"
+import { useNavigate } from "react"
 
-function Signup(setUser){
+function Signup({setUser}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -9,9 +9,39 @@ function Signup(setUser){
     const [errors, setErrors] = useState([]);
 
 
+
+    function handleSubmit(e) {
+        // post request for User
+        // else return error message
+        e.preventDefault()
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({ 
+                username: username,
+                password: password,
+                password_confirmation: passwordConfirmation
+            }),
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((userData) => {
+                    setUser(userData)
+                })
+                } else {
+                res.json().then((err) => setErrors(err.errors))
+                }
+            });
+    }
+
+    const errorMessage = errors.map((err) => {
+        <li key={err}>{err}</li>
+    })
+
     return(
         <div className="login-container">
-        <form >
+        <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
             <input
                 type="text"
