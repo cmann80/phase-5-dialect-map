@@ -1,5 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom'
+import SurveyContainer from "../SurveyContainer/SurveyContainer"
+import "./Profile.css"
 
 function Profile ({user}){
 
@@ -35,7 +37,7 @@ function Profile ({user}){
             <h1>Profile</h1>
             <h2>Username</h2>
             <p>{user.username}</p>
-            <Link to="survey">Survey</Link>
+            <Link to="/survey">Survey</Link>
         </div>
     )
 

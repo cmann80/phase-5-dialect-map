@@ -12,7 +12,28 @@ import React from 'react';
 function App() {
 
   const [user, setUser] = useState(null)
+  const [survey, setSurvey] = useState({})
+  const [errors, setErrors] = useState(false)
   console.log(user)
+
+
+  useEffect(() => {
+    fetch(`/surveys/1`)
+    .then(res => {
+        if(res.ok){
+            res.json().then(survey => {
+            setSurvey(survey)
+            console.log(survey)
+            })
+        } 
+        else{
+            res.json().then(data => setErrors(data.error))
+        }
+    })
+}, [])
+
+if(errors) return <h1>{errors}</h1>
+
 
   return (
     <div className="App">
@@ -23,7 +44,7 @@ function App() {
             <Route path= "/" element={<Home/>}/>
             <Route path="/signup" element={<Signup setUser={setUser}/>}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/survey" element={<SurveyContainer user={user}/>}/>
+            <Route path="/survey" element={<SurveyContainer user={user} survey={survey}/>}/>
             <Route path="/profile" element={<Profile user={user}/>}/>
           </Routes>
         </BrowserRouter>

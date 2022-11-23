@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :responses
-  resources :surveys
-  resources :user_locations
-  resources :places
+  resources :responses, only: []
+  resources :surveys, only: [:show]
+  resources :user_locations, only: []
+  resources :places, only: []
   resources :users, only: [:show, :create]
 
   post "/signup/", to: "users#create"
