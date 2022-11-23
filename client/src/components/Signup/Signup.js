@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Signup({setUser}){
     const [username, setUsername] = useState("");
@@ -8,7 +8,7 @@ function Signup({setUser}){
     const [displayName, setDisplayName] = useState("");
     const [errors, setErrors] = useState([]);
 
-
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         // post request for User
@@ -28,6 +28,7 @@ function Signup({setUser}){
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
+                    navigate("/home")
                 })
                 } else {
                 res.json().then((err) => setErrors(err.errors))
