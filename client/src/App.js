@@ -23,7 +23,6 @@ function App() {
         if(res.ok){
             res.json().then(survey => {
             setSurvey(survey)
-            console.log(survey)
             })
         } 
         else{
@@ -42,7 +41,6 @@ if(errors) return <h1>{errors}</h1>
   questionArray.pop()
   questionArray.pop()
 
-  console.log(questionArray)
 
 
   return (
