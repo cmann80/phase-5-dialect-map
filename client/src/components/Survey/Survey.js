@@ -23,7 +23,9 @@ function Survey({questionArray}){
             const updatedResponses = [...responses]
             updatedResponses[currentQuestion] = selectedOption
             setResponses(updatedResponses)
+            console.log(selectedOption)
             console.log(`user responded to question ${currentQuestion}  with ${responses[currentQuestion]}`)
+            console.log(responses)
         }
     }
 
@@ -36,8 +38,8 @@ function Survey({questionArray}){
     function handleSelect(e){
 
         setSelectedOption(e.target.value)
-        console.log(selectedOption)
-        console.log(responses)
+
+
         
 
     }
