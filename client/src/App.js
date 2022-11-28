@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar/NavBar"
 import Home from "./components/Home/Home"
 import Login from "./components/Login/Login"
 import Profile from "./components/Profile/Profile"
-import SurveyContainer from "./components/SurveyContainer/SurveyContainer"
+import Survey from "./components/Survey/Survey"
 import { Route, Routes, BrowserRouter} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import React from 'react';
@@ -34,6 +34,16 @@ function App() {
 
 if(errors) return <h1>{errors}</h1>
 
+// creates an array from the survey object
+  const questionArray = Object.values(survey)
+
+  // removes the first, and last two elements of the array (really dumb)
+  questionArray.shift()
+  questionArray.pop()
+  questionArray.pop()
+
+  console.log(questionArray)
+
 
   return (
     <div className="App">
@@ -44,7 +54,7 @@ if(errors) return <h1>{errors}</h1>
             <Route path= "/" element={<Home/>}/>
             <Route path="/signup" element={<Signup setUser={setUser}/>}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/survey" element={<SurveyContainer user={user} survey={survey}/>}/>
+            <Route path="/survey" element={<Survey user={user} questionArray={questionArray}/>}/>
             <Route path="/profile" element={<Profile user={user}/>}/>
           </Routes>
         </BrowserRouter>

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom'
-import SurveyContainer from "../SurveyContainer/SurveyContainer"
+import Survey from "../Survey/Survey"
 import "./Profile.css"
 
 function Profile ({user}){
