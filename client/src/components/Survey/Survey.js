@@ -4,11 +4,12 @@ import "./Survey.css"
 
 function Survey({questionArray}){
 
-console.log(questionArray)
+
 
     //state for what question is currently on the page
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
+    console.log(currentQuestion)
 
     function incrementQuestion(){
         if (currentQuestion < questionArray.length -1){
@@ -29,6 +30,14 @@ console.log(questionArray)
             </div>
             <div className ="question-text">
                 {questionArray[currentQuestion]}
+            </div>
+            <div className = "response-choices">
+                <form>
+                    <input type = "radio" name = "choice" value ="yes"/>
+                    <label for="yes">yes</label>
+                    <input type = "radio" name ="choice" value ="no"/>
+                    <label for="no">no</label>
+                </form>
             </div>
             <div className="direction-buttons"> 
             <button onClick={() => decrementQuestion()}>Previous</button>
