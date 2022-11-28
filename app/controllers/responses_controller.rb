@@ -8,6 +8,7 @@ class ResponsesController < ApplicationController
     def update
         response = Response.find(params[:id])
         response.update!(response_params)
+        render json: response, status: updated
     end
 
     private

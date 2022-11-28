@@ -11,13 +11,19 @@ function Survey({questionArray}){
 
 
     //state of all survey responses
-    const [responses, setResponses] = useState([null, null, null, null, null, null, null, null, null, null])
+    const [responses, setResponses] = useState(["", "", "", "", "", "", "", "", "", "",])
 
-    console.log(currentQuestion)
+    const [selectedOption, setSelectedOption] = useState("")
+
+
 
     function incrementQuestion(){
         if (currentQuestion < questionArray.length -1){
             setCurrentQuestion(currentQuestion +1)
+            const updatedResponses = [...responses]
+            updatedResponses[currentQuestion] = selectedOption
+            setResponses(updatedResponses)
+            console.log(`user responded to question ${currentQuestion}  with ${responses[currentQuestion]}`)
         }
     }
 
@@ -25,6 +31,15 @@ function Survey({questionArray}){
         if (currentQuestion > 0){
             setCurrentQuestion(currentQuestion -1)
         }
+    }
+
+    function handleSelect(e){
+
+        setSelectedOption(e.target.value)
+        console.log(selectedOption)
+        console.log(responses)
+        
+
     }
 
     return(
@@ -37,10 +52,22 @@ function Survey({questionArray}){
             </div>
             <div className = "response-choices">
                 <form>
-                    <input type = "radio" name = "choice" value ="yes"/>
-                    <label htmlFor="yes">yes</label>
-                    <input type = "radio" name ="choice" value ="no"/>
-                    <label htmlFor="no">no</label>
+                    <fieldset>
+                        <input 
+                            type = "radio" 
+                            name = "choice" 
+                            value ="yes"
+                        onChange = {handleSelect}
+                        />
+                        <label htmlFor="yes">yes</label>
+                        <input 
+                            type = "radio" 
+                            name ="choice" 
+                            value ="no"
+                            onChange = {handleSelect}
+                            />
+                        <label htmlFor="no">no</label>
+                    </fieldset>
                 </form>
             </div>
             <div className="direction-buttons"> 
