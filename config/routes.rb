@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :responses, only: []
+  resources :responses, only: [:create, :update]
   resources :surveys, only: [:show]
   resources :user_locations, only: []
   resources :places, only: []

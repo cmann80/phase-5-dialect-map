@@ -9,6 +9,10 @@ function Survey({questionArray}){
     //state for what question is currently on the page
     const [currentQuestion, setCurrentQuestion] = useState(0)
 
+
+    //state of all survey responses
+    const [responses, setResponses] = useState([null, null, null, null, null, null, null, null, null, null])
+
     console.log(currentQuestion)
 
     function incrementQuestion(){
@@ -34,9 +38,9 @@ function Survey({questionArray}){
             <div className = "response-choices">
                 <form>
                     <input type = "radio" name = "choice" value ="yes"/>
-                    <label for="yes">yes</label>
+                    <label htmlFor="yes">yes</label>
                     <input type = "radio" name ="choice" value ="no"/>
-                    <label for="no">no</label>
+                    <label htmlFor="no">no</label>
                 </form>
             </div>
             <div className="direction-buttons"> 
