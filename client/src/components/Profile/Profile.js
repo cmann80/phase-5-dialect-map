@@ -1,9 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom'
-import Survey from "../Survey/Survey"
 import "./Profile.css"
 
-function Profile ({user}){
+function Profile ({user, setUser}){
 
 
     const [errors, setErrors] = useState(false)
@@ -12,27 +11,37 @@ function Profile ({user}){
 
     const params = useParams()
 
+    // useEffect(() => {
+    //     fetch("/auth")
+    //     .then(res => {
+    //         console.log(res)
+    //     if(res.ok){
+    //         res.json()
+    //         .then(user => setUser(user))
+    //     } 
+    //     })
+    // }, [])
+    console.log(user)
 
-
-    // fetches user information, or error
-    useEffect(() => {
-        fetch(`/users/${user.id}`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(user => {
-                    console.log(user)
-                })
-            } 
-            else{
-                res.json().then(data => setErrors(data.error))
-            }
-        })
-    }, [])
+    // // fetches user information, or error
+    // useEffect(() => {
+    //     fetch(`/users/${user.id}`)
+    //     .then(res => {
+    //         if(res.ok){
+    //             res.json().then(user => {
+    //                 console.log(user)
+    //             })
+    //         } 
+    //         else{
+    //             res.json().then(data => setErrors(data.error))
+    //         }
+    //     })
+    // }, [])
 
     // on clicking the take survey button, creates a new survey entry in the survey table if one doesn't exist and takes the user to the survey page
     function surveyLink(){
     
-        if (user.responses){
+        if (user?.responses){
             fetch("/responses", {
                 method: "POST",
                 headers: {
@@ -77,9 +86,9 @@ function Profile ({user}){
         <div className="profile-container">
             <h1>Profile</h1>
             <h2>Username</h2>
-            <p>{user.username}</p>
+            <p>{user?.username}</p>
             <Link to="/survey">
-                <button class="survey-button" onClick={surveyLink()}>Take survey</button>
+                <button className="survey-button" onClick={surveyLink()}>Take survey</button>
             </Link>
         </div>
     )

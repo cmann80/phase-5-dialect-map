@@ -9,12 +9,24 @@ import { Route, Routes, BrowserRouter} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import React from 'react';
 
+
+
 function App() {
 
   const [user, setUser] = useState(null)
   const [survey, setSurvey] = useState({})
   const [errors, setErrors] = useState(false)
   console.log(user)
+
+  useEffect(() => {
+    fetch("/auth")
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(user => setUser(user))
+      } 
+    })
+  }, [])
 
 
   useEffect(() => {
@@ -53,7 +65,7 @@ if(errors) return <h1>{errors}</h1>
             <Route path="/signup" element={<Signup setUser={setUser}/>}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
             <Route path="/survey" element={<Survey user={user} questionArray={questionArray}/>}/>
-            <Route path="/profile" element={<Profile user={user}/>}/>
+            <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>
