@@ -11,6 +11,32 @@ function Profile ({user, setUser}){
 
     const params = useParams()
 
+    // useEffect(() => {
+    //     fetch("/auth")
+    //     .then(res => {
+    //         console.log(res)
+    //     if(res.ok){
+    //         res.json()
+    //         .then(user => setUser(user))
+    //     } 
+    //     })
+    // }, [])
+    console.log(user)
+
+    // // fetches user information, or error
+    // useEffect(() => {
+    //     fetch(`/users/${user.id}`)
+    //     .then(res => {
+    //         if(res.ok){
+    //             res.json().then(user => {
+    //                 console.log(user)
+    //             })
+    //         } 
+    //         else{
+    //             res.json().then(data => setErrors(data.error))
+    //         }
+    //     })
+    // }, [])
 
     // on clicking the take survey button, creates a new survey entry in the survey table if one doesn't exist and takes the user to the survey page
     function surveyLink(){
@@ -61,6 +87,25 @@ function Profile ({user, setUser}){
             <h1>Profile</h1>
             <h2>Username</h2>
             <p>{user?.username}</p>
+            <h2>Locations</h2>
+            <form className="locationForm">
+                <label>Where do you live now?
+                <input type= "text" name="locationNow"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
+            <form className="locationForm">
+                <label>Where  did you grow up?
+                <input type= "text" name="locationGrewUp"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
+            <form className="locationForm">
+                <label>Where are your parents from?
+                <input type= "text" name="locationParents"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
             <Link to="/survey">
                 <button className="survey-button" onClick={surveyLink()}>Take survey</button>
             </Link>

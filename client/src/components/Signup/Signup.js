@@ -66,6 +66,24 @@ function Signup({setUser}){
             />
             <button type="submit">Submit</button>
         </form>
+        <form className="locationForm">
+                <label>Where do you live now?
+                <input type= "text" name="locationNow"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
+            <form className="locationForm">
+                <label>Where  did you grow up?
+                <input type= "text" name="locationGrewUp"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
+            <form className="locationForm">
+                <label>Where are your parents from?
+                <input type= "text" name="locationParents"/>
+                <input type = "submit" value="Submit"/>
+                </label>
+            </form>
 
     </div>
     )
