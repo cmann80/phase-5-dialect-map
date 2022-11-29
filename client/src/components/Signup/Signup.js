@@ -6,7 +6,15 @@ function Signup({setUser}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [nowLocation, setNowLocation] = useState("")
+    const [bornLocation, setBornLocation] = useState("")
+    const [parentsLocation, setParentsLocation] = useState("")
     const [errors, setErrors] = useState([]);
+
+
+    console.log(nowLocation)
+    console.log(bornLocation)
+    console.log(parentsLocation)
 
     const navigate = useNavigate();
 
@@ -42,50 +50,60 @@ function Signup({setUser}){
 
     return(
         <div className="login-container">
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <label htmlFor="password_confirmation">Confirm Password:</label>
-            <input
-                type="password"
-                id="password_confirmation"
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-            <button type="submit">Submit</button>
-        </form>
-        <form className="locationForm">
-                <label>Where do you live now?
-                <input type= "text" name="locationNow"/>
-                <input type = "submit" value="Submit"/>
-                </label>
-            </form>
-            <form className="locationForm">
-                <label>Where  did you grow up?
-                <input type= "text" name="locationGrewUp"/>
-                <input type = "submit" value="Submit"/>
-                </label>
-            </form>
-            <form className="locationForm">
-                <label>Where are your parents from?
-                <input type= "text" name="locationParents"/>
-                <input type = "submit" value="Submit"/>
-                </label>
-            </form>
+            <h2>Signup</h2>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                /><br/>
 
-    </div>
+
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                /><br/>
+
+                <label htmlFor="password_confirmation">Confirm Password:</label>
+                <input
+                    type="password"
+                    id="password_confirmation"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                /><br/>
+
+                <label>Where do you live now?</label>
+                <input 
+                    type= "text" 
+                    name="locationNow"
+                    value={nowLocation}
+                    onChange={(e) => setNowLocation(e.target.value)}
+                /><br/>
+
+                <label>Where  did you grow up?</label>
+                <input 
+                    type= "text" 
+                    name="locationGrewUp"
+                    value={bornLocation}
+                    onChange={(e) => setBornLocation(e.target.value)}
+                /><br/>
+
+                <label>Where are your parents from?</label>
+                <input
+                    type= "text" 
+                    name="locationParents"
+                    value={parentsLocation}
+                    onChange={(e) => setParentsLocation(e.target.value)}
+                /><br/>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     )
 }
 
