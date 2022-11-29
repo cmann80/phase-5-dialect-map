@@ -33,7 +33,6 @@ const loginSwitch = () => {
     }
 
 }
-console.log(user)
     return (
         <div className='nav'>
             <h1>NavBar</h1>

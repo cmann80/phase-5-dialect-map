@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+
 
 function Signup({setUser}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [displayName, setDisplayName] = useState("");
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();

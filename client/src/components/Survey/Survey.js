@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import "./Survey.css"
+import { useNavigate } from 'react-router-dom';
 
 
-function Survey({questionArray}){
+function Survey({questionArray, user}){
 
-
+    const navigate = useNavigate();
 
     //state for what question is currently on the page
     const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -39,10 +40,25 @@ function Survey({questionArray}){
 
         setSelectedOption(e.target.value)
 
+            fetch(`/responses/${user.response.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    [`r${currentQuestion+1}`]: e.target.value
+                    
+                }),
+            }).then((r) => {
+                if (r.ok) {
+                    r.json().then(() => {
+                    })
+                } 
+            });
+        }
+    
 
-        
 
-    }
 
     return(
         <div className ="question-section">
