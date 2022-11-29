@@ -19,6 +19,7 @@ const loginSwitch = () => {
     if(user){
         return (<span>
             <h1>Welcome, {user.username}!</h1>
+            <Link to="profile">Profile</Link>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
         </span>)
         }
