@@ -52,7 +52,6 @@ function Survey({questionArray, user}){
             }).then((r) => {
                 if (r.ok) {
                     r.json().then(() => {
-                        navigate("/profile")
                     })
                 } 
             });
