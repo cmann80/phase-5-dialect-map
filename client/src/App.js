@@ -1,11 +1,11 @@
 import './App.css';
 import Signup from './components/Signup/Signup';
-import NavBar from "./components/NavBar/NavBar"
-import Home from "./components/Home/Home"
-import Login from "./components/Login/Login"
-import Profile from "./components/Profile/Profile"
-import Survey from "./components/Survey/Survey"
-import { Route, Routes, BrowserRouter} from 'react-router-dom'
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
+import Survey from "./components/Survey/Survey";
+import { Route, Routes, BrowserRouter, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import React from 'react';
 
