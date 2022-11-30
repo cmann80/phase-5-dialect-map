@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
     def create
         
-        place = Place.create!(params[:location])
+        place = Place.create!(location: params[:location])
         render json: place, status: :created
     end
 

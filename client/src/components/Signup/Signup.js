@@ -70,7 +70,7 @@ function Signup({setUser, user}){
                                 body:JSON.stringify({ 
                                 user_id: user.id,
                                 place_id: data.id,
-                                type: "now"
+                                location_type: "now"
                                 })
                             })
                         })
@@ -104,7 +104,7 @@ function Signup({setUser, user}){
                                 body:JSON.stringify({ 
                                 user_id: user.id,
                                 place_id: data.id,
-                                type: "born"
+                                location_type: "born"
                                 })
                             })
                         })
@@ -137,7 +137,7 @@ function Signup({setUser, user}){
                                 body:JSON.stringify({ 
                                 user_id: user.id,
                                 place_id: data.id,
-                                type: "parents"
+                                location_type: "parents"
                                 })
                             })
                         })
