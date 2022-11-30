@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+puts "seeding survey questions"
+
+Survey.create(q1: "question 1", q2: "question 2", q3: "question 3", q4: "question 4", q5: "question 5", q6: "question 6", q7: "question 7", q8: "question 8", q9: "question 9", q10: 'question 10')
+
+puts "seeding survey questions complete"

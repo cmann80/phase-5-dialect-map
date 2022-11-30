@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
     def create
-        place = Place.create!(place_params)
+        
+        place = Place.create!(params[:location])
         render json: place, status: :created
     end
 
@@ -9,9 +10,5 @@ class PlacesController < ApplicationController
         head :no_content
     end
 
-    private
 
-    def place_params
-        params.permit(:location)
-    end
 end

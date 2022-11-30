@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 
-function Signup({setUser}){
+function Signup({setUser, user}){
+    
+    // user states
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+    
+    // error state
+    const [errors, setErrors] = useState([]);
+
     const [nowLocation, setNowLocation] = useState("")
     const [bornLocation, setBornLocation] = useState("")
     const [parentsLocation, setParentsLocation] = useState("")
-    const [errors, setErrors] = useState([]);
 
-
-    console.log(nowLocation)
-    console.log(bornLocation)
-    console.log(parentsLocation)
 
     const navigate = useNavigate();
 
@@ -30,23 +32,124 @@ function Signup({setUser}){
             body:JSON.stringify({ 
                 username: username,
                 password: password,
-                password_confirmation: passwordConfirmation
+                password_confirmation: passwordConfirmation,
+
             }),
         }).then((res) => {
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
-                    navigate("/")
                 })
                 } else {
                 res.json().then((err) => setErrors(err.errors))
                 }
             });
-    }
 
-    const errorMessage = errors.map((err) => {
-        <li key={err}>{err}</li>
-    })
+        
+    
+
+    // post fetch for place for now location and user_location
+
+        fetch("/places", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({ 
+                location: nowLocation
+
+            }),
+                }).then((res) => {
+                    if (res.ok) {
+                        res.json().then((data) => {
+                            fetch("/user_locations", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body:JSON.stringify({ 
+                                user_id: user.id,
+                                place_id: data.id,
+                                type: "now"
+                                })
+                            })
+                        })
+                    } else {
+                res.json().then((err) => setErrors(err.errors))
+                }
+            })
+        
+        
+
+
+        // post fetch for place for born location and user_location
+
+        fetch("/places", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({ 
+                location: nowLocation
+
+            }),
+                }).then((res) => {
+                    if (res.ok) {
+                        res.json().then((data) => {
+                            fetch("/user_locations", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body:JSON.stringify({ 
+                                user_id: user.id,
+                                place_id: data.id,
+                                type: "born"
+                                })
+                            })
+                        })
+                    } else {
+                res.json().then((err) => setErrors(err.errors))
+                }
+            })
+        
+        
+
+    // post fetch for place for parents location and user_location
+
+        fetch("/places", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({ 
+                location: nowLocation
+
+            }),
+                }).then((res) => {
+                    if (res.ok) {
+                        res.json().then((data) => {
+                            fetch("/user_locations", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body:JSON.stringify({ 
+                                user_id: user.id,
+                                place_id: data.id,
+                                type: "parents"
+                                })
+                            })
+                        })
+                    } else {
+                res.json().then((err) => setErrors(err.errors))
+                }
+            })
+        }
+
+
+
+
 
     return(
         <div className="login-container">

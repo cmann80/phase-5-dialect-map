@@ -62,7 +62,7 @@ if(errors) return <h1>{errors}</h1>
       <NavBar user={user} setUser={setUser} className="navbar"/>
           <Routes>
             <Route path= "/" element={<Home/>}/>
-            <Route path="/signup" element={<Signup setUser={setUser}/>}/>
+            <Route path="/signup" element={<Signup user={user} setUser={setUser}/>}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
             <Route path="/survey" element={<Survey user={user} questionArray={questionArray}/>}/>
             <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
