@@ -14,7 +14,11 @@ class UserLocationsController < ApplicationController
     private
 
     def user_location_params
-        params.permit(:user_id, :place_id, :type)
+        params.permit(:user_id, :place_id, :location_type)
     end
 
 end
+
+
+# create a custom action that collects an array of objects, with the location name and type
+# then, iterate through the params array 

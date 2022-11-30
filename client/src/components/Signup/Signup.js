@@ -43,9 +43,11 @@ function Signup({setUser, user}){
                 } else {
                 res.json().then((err) => setErrors(err.errors))
                 }
-            });
+            }).then(() => {
 
-        
+
+
+ 
     
 
     // post fetch for place for now location and user_location
@@ -90,7 +92,7 @@ function Signup({setUser, user}){
                 "Content-Type": "application/json",
             },
             body:JSON.stringify({ 
-                location: nowLocation
+                location: bornLocation
 
             }),
                 }).then((res) => {
@@ -123,7 +125,7 @@ function Signup({setUser, user}){
                 "Content-Type": "application/json",
             },
             body:JSON.stringify({ 
-                location: nowLocation
+                location: bornLocation
 
             }),
                 }).then((res) => {
@@ -145,6 +147,9 @@ function Signup({setUser, user}){
                 res.json().then((err) => setErrors(err.errors))
                 }
             })
+        })
+
+        
         }
 
 
