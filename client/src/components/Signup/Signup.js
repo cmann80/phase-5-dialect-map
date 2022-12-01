@@ -13,12 +13,43 @@ function Signup({setUser, user}){
     // error state
     const [errors, setErrors] = useState([]);
 
-    const [nowLocation, setNowLocation] = useState("")
-    const [bornLocation, setBornLocation] = useState("")
-    const [parentsLocation, setParentsLocation] = useState("")
+    const [locations, setLocations]=useState({
+        places: [
+            {
+                location: "",
+                location_type: "now",
 
+            },
+            {
+                location: "",
+                location_type: "born",
+
+            },
+            {
+                location: "",
+                location_type: "parents",
+
+            }
+        ]
+    })
+
+console.log(locations)
 
     const navigate = useNavigate();
+
+
+    //function for posting the locations 
+    function placePostFetch(){
+        
+        fetch("/places", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({ ...locations })
+        })
+    }
+
 
     function handleSubmit(e) {
         // post request for User
@@ -39,118 +70,12 @@ function Signup({setUser, user}){
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
-                })
+                }).then(placePostFetch)
                 } else {
                 res.json().then((err) => setErrors(err.errors))
                 }
-            }).then(() => {
-
-
-
- 
-    
-
-    // post fetch for place for now location and user_location
-
-        fetch("/places", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({ 
-                location: nowLocation
-
-            }),
-                }).then((res) => {
-                    if (res.ok) {
-                        res.json().then((data) => {
-                            fetch("/user_locations", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body:JSON.stringify({ 
-                                user_id: user.id,
-                                place_id: data.id,
-                                location_type: "now"
-                                })
-                            })
-                        })
-                    } else {
-                res.json().then((err) => setErrors(err.errors))
-                }
-            })
-        
-        
-
-
-        // post fetch for place for born location and user_location
-
-        fetch("/places", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({ 
-                location: bornLocation
-
-            }),
-                }).then((res) => {
-                    if (res.ok) {
-                        res.json().then((data) => {
-                            fetch("/user_locations", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body:JSON.stringify({ 
-                                user_id: user.id,
-                                place_id: data.id,
-                                location_type: "born"
-                                })
-                            })
-                        })
-                    } else {
-                res.json().then((err) => setErrors(err.errors))
-                }
-            })
-        
-        
-
-    // post fetch for place for parents location and user_location
-
-        fetch("/places", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({ 
-                location: bornLocation
-
-            }),
-                }).then((res) => {
-                    if (res.ok) {
-                        res.json().then((data) => {
-                            fetch("/user_locations", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body:JSON.stringify({ 
-                                user_id: user.id,
-                                place_id: data.id,
-                                location_type: "parents"
-                                })
-                            })
-                        })
-                    } else {
-                res.json().then((err) => setErrors(err.errors))
-                }
-            })
         })
-
-        
-        }
+    }
 
 
 
@@ -189,25 +114,24 @@ function Signup({setUser, user}){
                 <input 
                     type= "text" 
                     name="locationNow"
-                    value={nowLocation}
-                    onChange={(e) => setNowLocation(e.target.value)}
+                    value={locations.places[0].location}
+                    onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0], location: e.target.value},{...currLocations.places[1]},{...currLocations.places[2]}]}))}
                 /><br/>
 
                 <label>Where  did you grow up?</label>
                 <input 
                     type= "text" 
                     name="locationGrewUp"
-                    value={bornLocation}
-                    onChange={(e) => setBornLocation(e.target.value)}
+                    value={locations.places[1].location}
+                    onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0]},{...currLocations.places[1], location: e.target.value},{...currLocations.places[2]}]}))}
                 /><br/>
-
                 <label>Where are your parents from?</label>
                 <input
                     type= "text" 
                     name="locationParents"
-                    value={parentsLocation}
-                    onChange={(e) => setParentsLocation(e.target.value)}
-                /><br/>
+                    value={locations.places[2].location}
+                    onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0]},{...currLocations.places[1]},{...currLocations.places[2], location: e.target.value}]}))}
+                /><br/> 
 
                 <button type="submit">Submit</button>
             </form>

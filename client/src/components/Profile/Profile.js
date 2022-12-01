@@ -19,7 +19,7 @@ function Profile ({user, setUser}){
     // on clicking the take survey button, creates a new survey entry in the survey table if one doesn't exist and takes the user to the survey page
     function surveyLink(){
     
-        if (user?.responses){
+        if (!user?.response){
             fetch("/responses", {
                 method: "POST",
                 headers: {
@@ -41,7 +41,7 @@ function Profile ({user, setUser}){
             }).then((res) => {
                 if (res.ok) {
                     res.json().then((data) => {
-                    setResponseData(data)
+                    setUser(currUser => ({...currUser, response: data}))
                     })
                     } else {
                     res.json().then((err) => setErrors(err.errors))
