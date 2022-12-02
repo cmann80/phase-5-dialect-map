@@ -25,6 +25,10 @@ function Home( errors, setErrors){
     }, [])
 console.log(places)
 
+    // converts place names into map coordinates
+    function geocoder(){
+
+    }
     
     return(
     <div>
