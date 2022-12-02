@@ -1,30 +1,30 @@
 import "./Home.css"
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 function Home( errors, setErrors){
     
-    const[mapMarkers, setMapMarkers] = useState([])
+    const[places, setPlaces] = useState([])
 
     
-    function renderMarkers (){
 
-            fetch(`/places`)
-            .then(res => {
-                if(res.ok){
-                    res.json().then(places => {
+    useEffect(() => {
+        fetch(`/places`)
+        .then(res => {
+            if(res.ok){
+                res.json().then(placeData => {
+                setPlaces(placeData)
+                })
+            } 
+            else{
+                res.json().then(data => setErrors(data.error))
+            }
+        })
+    }, [])
+console.log(places)
 
-                    })
-                } 
-                else{
-                    res.json().then(data => setErrors(data.error))
-                }
-            })
-
-
-    }
     
     return(
     <div>
