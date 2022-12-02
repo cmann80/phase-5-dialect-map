@@ -3,10 +3,10 @@ import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
 
 
-function Survey({questionArray, user, setUser}){
+function Survey({questionArray, user, setUser, errors, setErrors}){
 
     const navigate = useNavigate();
-    const [errors, setErrors] = useState(false)
+
     //state for what question is currently on the page
     // const [currentQuestion, setCurrentQuestion] = useState(0)
 

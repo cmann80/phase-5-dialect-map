@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 
-function Signup({setUser, user}){
+function Signup({setUser, user, errors, setErrors}){
     
     // user states
     const [username, setUsername] = useState("");
@@ -10,8 +10,7 @@ function Signup({setUser, user}){
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
     
-    // error state
-    const [errors, setErrors] = useState([]);
+
 
     const [locations, setLocations]=useState({
         places: [
