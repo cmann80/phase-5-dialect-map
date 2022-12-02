@@ -64,7 +64,7 @@ if(errors) return <h1>{errors}</h1>
             <Route path= "/" element={<Home/>}/>
             <Route path="/signup" element={<Signup user={user} setUser={setUser}/>}/>
             <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/survey" element={<Survey user={user} questionArray={questionArray}/>}/>
+            <Route path="/survey" element={<Survey user={user} setUser={setUser} questionArray={questionArray}/>}/>
             <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
           </Routes>
         </BrowserRouter>
