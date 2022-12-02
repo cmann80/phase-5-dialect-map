@@ -27,7 +27,7 @@ function App() {
       } 
     })
   }, [])
-
+console.log(process.env.REACT_APP_GEOCODE_API_KEY)
 
   useEffect(() => {
     fetch(`/surveys/1`)

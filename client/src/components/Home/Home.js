@@ -26,10 +26,28 @@ function Home( errors, setErrors){
 console.log(places)
 
     // converts place names into map coordinates
-    function geocoder(){
+    function geocoder(placeName){
 
+        var requestOptions = {
+            method: 'GET',
+        };
+        fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=b9046482415f4e0fa5e8c76b2cd307ae`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            console.log(result.features[0].geometry.coordinates[0])
+            console.log(result.features[0].geometry.coordinates[1])
+            
+        })
+        .catch(error => console.log('error', error));
     }
     
+
+geocoder("Seattle")
+
+    
+    
+
     return(
     <div>
         <MapContainer center={[40.712778, -74.006111]} zoom={4} scrollWheelZoom={true} className = "map">
