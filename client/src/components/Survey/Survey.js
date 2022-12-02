@@ -162,7 +162,7 @@ function handleSubmitAll(e){
             <button onClick={(e) => incrementQuestion(e)}>Next</button> */}
             {/* </div> */}
             <form onSubmit={(e) => handleSubmitAll(e)}>
-                <p>Question 1</p>
+                <p>{questionArray[0]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -177,7 +177,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse1(e.target.value)}
                 />
-                <p>Question 2</p>
+                <p>{questionArray[1]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -192,7 +192,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse2(e.target.value)}
                 />
-                <p>Question 3</p>
+                <p>{questionArray[2]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -207,7 +207,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse3(e.target.value)}
                 />
-                <p>Question 4</p>
+                <p>{questionArray[3]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -222,7 +222,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse4(e.target.value)}
                 />
-                <p>Question 5</p>
+                <p>{questionArray[4]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -237,7 +237,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse5(e.target.value)}
                 />
-                <p>Question 6</p>
+                <p>{questionArray[5]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -252,7 +252,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse6(e.target.value)}
                 />
-                <p>Question 7</p>
+                <p>{questionArray[6]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -267,7 +267,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse7(e.target.value)}
                 />
-                <p>Question 8</p>
+                <p>{questionArray[7]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -282,7 +282,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse8(e.target.value)}
                 />
-                <p>Question 9</p>
+                <p>{questionArray[8]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
@@ -297,7 +297,7 @@ function handleSubmitAll(e){
                 value ="no"
                 onChange = {(e) => setResponse9(e.target.value)}
                 />
-                <p>Question 10</p>
+                <p>{questionArray[9]}</p>
                 <label>Yes</label>
                 <input 
                 type = "radio" 
