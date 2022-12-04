@@ -56,7 +56,7 @@ console.log(properties)
         return properties.map(property  =>{
             console.log(property)
             return (<Marker id = {property.city} position={[property.lat, property.lon]}>
-                    {/* <Popup>{placeInfo.placeName}</Popup> */}
+                    <Popup>{property.formatted}</Popup>
                     </Marker>)
         })
     }
