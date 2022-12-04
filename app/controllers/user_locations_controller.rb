@@ -1,5 +1,10 @@
 class UserLocationsController < ApplicationController
 
+    def index
+        user_locations = UserLocation.all
+        render json: user_locations
+    end
+    
     def create
         user_location = UserLocation.create!(user_location_params)
             render json: user_location, status: :created
