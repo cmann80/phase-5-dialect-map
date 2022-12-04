@@ -6,16 +6,18 @@ import { useState, useEffect } from "react"
 
 function Home( errors, setErrors){
     
-    const[places, setPlaces] = useState([])
-
+    const[properties, setProperties] = useState([])
     
+
+    // console.log(process.env.REACT_APP_GEOCODE_API_KEY)
 
     useEffect(() => {
         fetch(`/places`)
         .then(res => {
             if(res.ok){
                 res.json().then(placeData => {
-                setPlaces(placeData)
+                    console.log(placeData)
+                updateMarkers(placeData)
                 })
             } 
             else{
@@ -23,30 +25,43 @@ function Home( errors, setErrors){
             }
         })
     }, [])
-console.log(places)
 
-    // converts place names into map coordinates
+    function updateMarkers(placeData){
+
+        placeData.map(place => {
+            geocoder(place.location)
+        })
+    }
+
+
+    // // converts place names into map coordinates
     function geocoder(placeName){
-
-        var requestOptions = {
-            method: 'GET',
-        };
-        fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=b9046482415f4e0fa5e8c76b2cd307ae`, requestOptions)
+        
+        
+        fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
-            console.log(result.features[0].geometry.coordinates[0])
-            console.log(result.features[0].geometry.coordinates[1])
-            
+            // console.log(result)
+            setProperties((properties) => [...properties, result.features[0].properties])
         })
-        .catch(error => console.log('error', error));
+
+console.log(properties)
+
     }
     
 
-geocoder("Seattle")
+    function renderMarkers(){
+        
+        // console.log(markers)
+        return properties.map(property  =>{
+            console.log(property)
+            return (<Marker id = {property.city} position={[property.lat, property.lon]}>
+                    {/* <Popup>{placeInfo.placeName}</Popup> */}
+                    </Marker>)
+        })
+    }
+    
 
-    
-    
 
     return(
     <div>
@@ -55,10 +70,7 @@ geocoder("Seattle")
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
-        <Marker position={[40.712778, -74.006111]}>
-
-        </Marker>
+        {renderMarkers()}
         </MapContainer>
     </div>
     )
