@@ -69,6 +69,7 @@ console.log(locations)
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
+                    navigate("/profile")
                 }).then(placePostFetch)
                 } else {
                 res.json().then((err) => setErrors(err.errors))

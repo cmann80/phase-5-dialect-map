@@ -17,8 +17,8 @@ function App() {
 
   const[properties, setProperties] = useState([])
   const[userLocations, setUserLocations] = useState([])
-  console.log(properties)
-  console.log(userLocations)
+
+  const[selectedPlace, setSelectedPlace] = useState('')
 
   const [user, setUser] = useState(null)
   const [survey, setSurvey] = useState({})
@@ -70,7 +70,7 @@ function App() {
       .then(response => response.json())
       .then(result => {
           console.log(result)
-          setProperties((properties) => [...properties, result.features[0].properties])
+          setProperties((properties) => [...properties, {...result.features[0].properties, placeName}])
       })
   }
 
@@ -120,12 +120,12 @@ if(errors) return <h1>{errors}</h1>
       <BrowserRouter>
       <NavBar user={user} setUser={setUser} className="navbar"/>
           <Routes>
-            <Route path= "/" element={<Home properties={properties}/>}/>
+            <Route path= "/" element={<Home selectedPlace = {selectedPlace} setSelectedPlace={setSelectedPlace} properties={properties}/>}/>
             <Route path="/signup" element={<Signup errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
             <Route path="/login" element={<Login errors={errors} setErrors={setErrors} setUser={setUser}/>}/>
             <Route path="/survey" element={<Survey errors={errors} setErrors={setErrors} user={user} setUser={setUser} questionArray={questionArray}/>}/>
             <Route path="/profile" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
-            <Route path="/survey_responses" element={<SurveyResponses errors={errors} setErrors={setErrors} survey={survey} userLocations={userLocations}/>}/>
+            <Route path="/survey_responses/:placeName" element={<SurveyResponses errors={errors} setErrors={setErrors} survey={survey} userLocations={userLocations}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>
