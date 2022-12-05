@@ -45,7 +45,6 @@ function App() {
       .then(res => {
           if(res.ok){
               res.json().then(userLocationData => {
-                  console.log(userLocationData)
                   setUserLocations(userLocations)
               })
           } 
@@ -69,7 +68,6 @@ function App() {
       fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
       .then(response => response.json())
       .then(result => {
-          console.log(result)
           setProperties((properties) => [...properties, {...result.features[0].properties, placeName}])
       })
   }
