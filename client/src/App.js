@@ -1,11 +1,12 @@
 import './App.css';
 import Signup from './components/Signup/Signup';
+import SurveyResults from './components/SurveyResults/SurveyResults'
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Survey from "./components/Survey/Survey";
-import { Route, Routes, BrowserRouter, useNavigate} from 'react-router-dom';
+import { Route, Routes, BrowserRouter} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import React from 'react';
 
@@ -62,10 +63,11 @@ if(errors) return <h1>{errors}</h1>
       <NavBar user={user} setUser={setUser} className="navbar"/>
           <Routes>
             <Route path= "/" element={<Home/>}/>
-            <Route path="/signup" element={<Signup setUser={setUser}/>}/>
-            <Route path="/login" element={<Login setUser={setUser}/>}/>
-            <Route path="/survey" element={<Survey user={user} questionArray={questionArray}/>}/>
-            <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}/>
+            <Route path="/signup" element={<Signup errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
+            <Route path="/login" element={<Login errors={errors} setErrors={setErrors} setUser={setUser}/>}/>
+            <Route path="/survey" element={<Survey errors={errors} setErrors={setErrors} user={user} setUser={setUser} questionArray={questionArray}/>}/>
+            <Route path="/profile" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
+            <Route path="/survey_results" element={<SurveyResults errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
           </Routes>
         </BrowserRouter>
         <h1>App</h1>
