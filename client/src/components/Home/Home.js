@@ -18,7 +18,7 @@ function Home( {errors, setErrors, properties}){
             return (<Marker id = {property.city} position={[property.lat, property.lon]}>
                         <Popup id= {property.formatted}>
                         {property.formatted}<br/>
-                        <Link to='/survey_results'>Survey Results for this place</Link>
+                        <Link to='/survey_responses'>Survey Responses for this place</Link>
                         </Popup>
                     </Marker>)
             })

@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import {useEffect, useState} from "react"
 
-function SurveyResults(){
+function SurveyResponses({userLocations, survey}){
+
+
+
+
 
     return (
 
@@ -12,4 +17,4 @@ function SurveyResults(){
     )
 }
 
-export default SurveyResults
+export default SurveyResponses
