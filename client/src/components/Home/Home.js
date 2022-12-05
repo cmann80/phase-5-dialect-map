@@ -5,62 +5,10 @@ import { useState, useEffect } from "react"
 import { Link } from 'react-router-dom';
 
 
-function Home( errors, setErrors){
-    
-    const[properties, setProperties] = useState([])
-    const[userLocations, setUserLocations] = useState([])
-    
 
-    // console.log(process.env.REACT_APP_GEOCODE_API_KEY)
-
-    useEffect(() => {
-        fetch(`/places`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(placeData => {
-                    console.log(placeData)
-                updateMarkers(placeData)
-                })
-            } 
-            else{
-                res.json().then(data => setErrors(data.error))
-            }
-        })
-    }, [])
-
-    useEffect(() => {
-        fetch(`/user_locations`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(userLocationData => {
-                    console.log(userLocationData)
-                    setUserLocations(userLocations)
-                })
-            } 
-            else{
-                res.json().then(data => setErrors(data.error))
-            }
-        })
-    }, [])
+function Home( {errors, setErrors, properties}){
 
 
-    // updates the marker locations as soon as page loads
-    function updateMarkers(placeData){
-        placeData.map(place => {
-            geocoder(place.location)
-        })
-    }
-
-
-    // // converts place names into map coordinates
-    function geocoder(placeName){
-        fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result)
-            setProperties((properties) => [...properties, result.features[0].properties])
-        })
-    }
     
     // renders markers and their popups on the map
     function renderMarkers(){
