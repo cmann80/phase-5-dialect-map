@@ -34,6 +34,7 @@ function Login ({ setUser }) {
 
     return (
         <div>
+            <h2>Please choose a username that is not personally identifiable</h2>
             <form onSubmit={handleSubmit}>
                 <label className="label" htmlFor="username">Username:</label>
                 <input

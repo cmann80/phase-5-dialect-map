@@ -6,19 +6,28 @@ import { Link } from 'react-router-dom';
 
 
 
-function Home( {errors, setErrors, properties}){
+function Home( {errors, setErrors, properties, selectedPlace, setSelectedPlace}){
 
 
-    
+    function handlePlaceSelection(e){
+
+        console.log(e)
+
+    }
+
+
     // renders markers and their popups on the map
     function renderMarkers(){
         // console.log(markers)
         return properties.map(property  =>{
             // console.log(property)
-            return (<Marker id = {property.city} position={[property.lat, property.lon]}>
-                        <Popup id= {property.formatted}>
+            return (<Marker id = {property.city} 
+                    position={[property.lat, property.lon]}
+                    >
+                        <Popup id= {property.formatted} >
                         {property.formatted}<br/>
-                        <Link to='/survey_results'>Survey Results for this place</Link>
+
+                        <Link to={`/survey_responses/${property.placeName}`} property={property}>Survey Responses for this place</Link>
                         </Popup>
                     </Marker>)
             })
@@ -28,6 +37,7 @@ function Home( {errors, setErrors, properties}){
 
     return(
     <div>
+        <h2>Click on a map marker to see all users' survey results for that place</h2>
         <MapContainer center={[0, 0]} zoom={1} scrollWheelZoom={true} className = "map">
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

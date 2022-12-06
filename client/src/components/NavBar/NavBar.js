@@ -1,3 +1,4 @@
+import { DivOverlay } from 'leaflet';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
@@ -17,27 +18,30 @@ function NavBar ({ user, setUser }) {
 
 const loginSwitch = () => {
     if(user){
-        return (<span>
-            <h1>Welcome, {user.username}!</h1>
+        return (<div className="user-options">
+            <p>Welcome, {user.username}!</p>
             <Link to="profile">Profile</Link>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
-        </span>)
+        </div>)
         }
     else
         {return(
-        <span>
+        <div className="user-options">
             <Link to="signup">Signup</Link>
             <Link to="login">Login</Link>
-        </span>
+        </div>
         )
     }
 
 }
     return (
         <div className='nav'>
-            <h1>NavBar</h1>
-            <Link to="/">Home</Link>
-            {loginSwitch()}
+            <h1>Dialect Map</h1>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li>{loginSwitch()}</li>
+            </ul>
         </div>
     )
 }
