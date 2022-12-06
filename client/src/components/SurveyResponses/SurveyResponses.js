@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import {useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
 import { map } from 'leaflet';
+import "./SurveyResponses.css"
+
 
 function SurveyResponses({userLocations, survey, errors, setErrors}){
 
@@ -17,6 +19,7 @@ useEffect(() => {
     .then(res => {
         if(res.ok){
             res.json().then(responseData => {
+                console.log(responseData)
             setResponses(responseData)
             })
         } 
@@ -33,25 +36,24 @@ useEffect(() => {
         return responses.map(response => {
 
 
-            console.log(response)
             return response.user.user_locations.map(user_location => {
-                console.log(user_location.place)
-                
                 function renderType(){
-                    if (user_location.location_type ==="now"){
+                    if (user_location.location_type === "now"){
+                        console.log(`now place ${user_location.place.location}`)
                         return  (<td>User lives there now</td>)
                     }
                     else if (user_location.location_type === "born"){
-                        return <td>user was born there</td>
+                        console.log(`born place ${user_location.place.location}`)
+                        return (<td>user was born there</td>)
                     }
                     else {
-                        return <td>user's parents were born there</td>
+                        console.log(`parents place ${user_location.place.location}`)
+                        return (<td>user's parents were born there</td>)
                     }
                 }
                 if(user_location.place.location === placeName){
-
                     return (
-                    <tr>
+                    <tr key={user_location.id}>
                     <td>{response.user.username}</td>
                     {renderType()}
                     <td>{response.r1}</td>
@@ -79,6 +81,7 @@ useEffect(() => {
     <h2>Survey Responses for {placeName}</h2>
     <br/>
     <table>
+        <thead>
             <tr>
                 <th>User</th>
                 <th>Type</th>
@@ -93,8 +96,12 @@ useEffect(() => {
                 <th>{survey.q9}</th>
                 <th>{survey.q10}</th>
             </tr>
+        </thead>
+            <tbody>
                 {generateTable()}
+            </tbody>
         </table>
+        <p>To add your own data, fill out the survey through the profile page.</p>
 
     <Link to="/">back to home</Link>
 </div>)

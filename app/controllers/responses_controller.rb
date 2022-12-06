@@ -1,5 +1,7 @@
 class ResponsesController < ApplicationController
 
+    skip_before_action :authorize, only: :index
+
     def index
         responses = Response.all
         render json: responses

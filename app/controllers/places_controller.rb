@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
     
-
+    skip_before_action :authorize, only: :index
 
     def index
         places = Place.all
@@ -8,11 +8,11 @@ class PlacesController < ApplicationController
     end
     
     def create
-        params[:places].each do |place|
-            place = Place.find_or_create_by(location: place[:location])
+        params[:places].each do |location|
+            place = Place.find_or_create_by(location: location[:location])
             UserLocation.create(
                 user_id: session[:user_id],   
-                location_type: place[:location_type], 
+                location_type: location[:location_type], 
                 place_id: place.id
             )
         end 

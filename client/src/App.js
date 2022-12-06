@@ -24,14 +24,14 @@ function App() {
     const [user, setUser] = useState(null)
     const [survey, setSurvey] = useState({})
     const [errors, setErrors] = useState(false)
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         fetch(`/places`)
         .then(res => {
             if(res.ok){
                 res.json().then(placeData => {
-                    console.log(placeData)
+                    // console.log(placeData)
                 updateMarkers(placeData)
                 })
             } 
@@ -66,6 +66,7 @@ function App() {
 
   // // converts place names into map coordinates
     function geocoder(placeName){
+        console.log("geocoder")
         fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
         .then(response => response.json())
         .then(result => {
@@ -125,12 +126,11 @@ if(errors) return <h1>{errors}</h1>
             <Route path="/signup" element={<Signup errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
             <Route path="/login" element={<Login errors={errors} setErrors={setErrors} setUser={setUser}/>}/>
             <Route path="/survey" element={<Survey errors={errors} setErrors={setErrors} user={user} setUser={setUser} questionArray={questionArray}/>}/>
-            <Route path="/profile" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
+            <Route path="/profile/" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
             <Route path="/survey_responses/:placeName" element={<SurveyResponses errors={errors} setErrors={setErrors} survey={survey} userLocations={userLocations}/>}/>
-            <Route path="/about" element={About}/>
+            <Route path="/about" element={<About/>}/>
         </Routes>
         </BrowserRouter>
-        <h1>App</h1>
     </div>
     );
 }

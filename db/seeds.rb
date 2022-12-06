@@ -28,11 +28,11 @@ puts "creating users, places and responses"
 
 5.times do
     user = User.create(username: Faker::Name.first_name, password: "12345")
-    now_place = Place.create(location: Faker::Address.country)
+    now_place = Place.create(location: Faker::Address.unique.country)
     UserLocation.create(user_id: user.id, place_id: now_place.id, location_type: "now")
-    born_place = Place.create(location: Faker::Address.country)
+    born_place = Place.create(location: Faker::Address.unique.country)
     UserLocation.create(user_id: user.id, place_id: born_place.id, location_type: "born")
-    parents_place = Place.create(location: Faker::Address.country)
+    parents_place = Place.create(location: Faker::Address.unique.country)
     UserLocation.create(user_id: user.id, place_id: parents_place.id, location_type: "parents")
     Response.create(user_id: user.id, r1: yesno, r2: yesno, r3: yesno, r4: yesno, r5: yesno, r6: yesno, r7: yesno, r8: yesno, r9: yesno, r10: yesno)
 end
