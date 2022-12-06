@@ -2,7 +2,16 @@ require 'faker'
 
 puts "seeding survey questions"
 
-Survey.create(q1: "question 1", q2: "question 2", q3: "question 3", q4: "question 4", q5: "question 5", q6: "question 6", q7: "question 7", q8: "question 8", q9: "question 9", q10: 'question 10')
+Survey.create(q1: "Do 'caught' and 'cot' sound the same to you?", 
+q2: "Do you have a specialized word or expression for when it rains while sunny?", 
+q3: "Does the final vowel in 'Monday,' Friday' etc. rhyme with 'Cindy' to you?", 
+q4: "Do 'really' and 'sit' have the same vowel sound for you?", 
+q5: "Do 'roof' and 'room' have the same vowel sound to you?", 
+q6: "Do you put a stress on the first word of 'cream cheese'?", 
+q7: "Do you call those little lobstery things in the lake a 'crawdad'?", 
+q8: "Do you pronounce the 'h' in 'herb?", 
+q9: "Do you call a round thing in the middle of a street intersection a 'roundabout'?", 
+q10: "Do you call high speed roads that go across the country a 'freeway'?")
 
 def yesno
     var = rand 0..1
