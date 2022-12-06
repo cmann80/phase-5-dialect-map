@@ -36,6 +36,8 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+gem "faker"
+
 gem 'bcrypt'
 
 gem 'active_model_serializers'

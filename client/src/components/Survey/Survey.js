@@ -108,6 +108,7 @@ function handleSubmitAll(e){
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
+            user_id: user.id,
             r1: response1,
             r2: response2,
             r3: response3,
@@ -122,6 +123,7 @@ function handleSubmitAll(e){
         }).then((res) => {
             if (res.ok) {
                 res.json().then((data) => {
+                    console.log(data)
                     setUser(currUser => ({...currUser, response: data}))
                 })
             } else {

@@ -33,7 +33,9 @@ useEffect(() => {
             console.log(response)
             return response.user.user_locations.map(user_location => {
                 console.log(user_location.place)
+                console.log(placeName)
                 if(user_location.place.location == placeName){
+
                     return (
                     <tr>
                     <td>{response.user.username}</td>
