@@ -32,7 +32,7 @@ function Signup({setUser, user, errors, setErrors}){
         ]
     })
 
-console.log(locations)
+    console.log(locations)
 
     const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ console.log(locations)
                 "Content-Type": "application/json",
             },
             body:JSON.stringify({ ...locations })
-        })
+        }).then(navigate("/"))
     }
 
 
@@ -69,8 +69,8 @@ console.log(locations)
             if (res.ok) {
                 res.json().then((userData) => {
                     setUser(userData)
-                    navigate("/profile")
                 }).then(placePostFetch)
+                
                 } else {
                 res.json().then((err) => setErrors(err.errors))
                 }
@@ -84,6 +84,7 @@ console.log(locations)
     return(
         <div className="login-container">
             <h2>Signup</h2>
+            <h2>Please choose a username that is not personally identifiable</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username:</label>
                 <input

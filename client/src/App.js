@@ -24,14 +24,14 @@ function App() {
     const [user, setUser] = useState(null)
     const [survey, setSurvey] = useState({})
     const [errors, setErrors] = useState(false)
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         fetch(`/places`)
         .then(res => {
             if(res.ok){
                 res.json().then(placeData => {
-                    console.log(placeData)
+                    // console.log(placeData)
                 updateMarkers(placeData)
                 })
             } 
@@ -66,6 +66,7 @@ function App() {
 
   // // converts place names into map coordinates
     function geocoder(placeName){
+        console.log("geocoder")
         fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
         .then(response => response.json())
         .then(result => {

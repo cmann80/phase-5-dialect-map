@@ -21,7 +21,7 @@ function Home( {errors, setErrors, properties, selectedPlace, setSelectedPlace})
         // console.log(markers)
         return properties.map(property  =>{
             // console.log(property)
-            return (<Marker id = {property.city} 
+            return (<Marker key = {property.place_id} 
                     position={[property.lat, property.lon]}
                     >
                         <Popup id= {property.formatted} >
@@ -36,9 +36,9 @@ function Home( {errors, setErrors, properties, selectedPlace, setSelectedPlace})
 
 
     return(
-    <div>
+    <div className="home">
         <h2>Click on a map marker to see all users' survey results for that place</h2>
-        <MapContainer center={[0, 0]} zoom={1} scrollWheelZoom={true} className = "map">
+        <MapContainer center={[0, 0]} zoom={2} scrollWheelZoom={true} className = "map">
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
