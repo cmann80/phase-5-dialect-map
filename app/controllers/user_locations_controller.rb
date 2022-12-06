@@ -1,5 +1,7 @@
 class UserLocationsController < ApplicationController
 
+    skip_before_action :authorize, only: :index
+
     def index
         user_locations = UserLocation.all
         render json: user_locations

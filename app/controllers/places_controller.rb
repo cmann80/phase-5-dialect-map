@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
     
-
+    skip_before_action :authorize, only: :index
 
     def index
         places = Place.all
