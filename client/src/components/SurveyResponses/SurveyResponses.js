@@ -27,19 +27,35 @@ useEffect(() => {
     })
 }, [])
 
+
+
 // a function to create  a state object for all responses for this place
     function generateTable(){
         return responses.map(response => {
+
+
             console.log(response)
             return response.user.user_locations.map(user_location => {
                 console.log(user_location.place)
                 console.log(placeName)
-                if(user_location.place.location == placeName){
+                
+                function renderType(){
+                    if (user_location.location_type ==="now"){
+                        return  (<td>User lives there now</td>)
+                    }
+                    else if (user_location.location_type === "born"){
+                        return <td>user was born there</td>
+                    }
+                    else {
+                        return <td>user's parents were born there</td>
+                    }
+                }
+                if(user_location.place.location === placeName){
 
                     return (
                     <tr>
                     <td>{response.user.username}</td>
-                    <td>{user_location.location_type}</td>
+                    {renderType()}
                     <td>{response.r1}</td>
                     <td>{response.r2}</td>
                     <td>{response.r3}</td>
