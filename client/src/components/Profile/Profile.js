@@ -61,8 +61,14 @@ function Profile ({user, setUser, errors, setErrors}){
             <h1>Profile</h1>
             <h2>Username</h2>
             <p>{user?.username}</p>
+            <h2>Location currently living in</h2>
+            <p>{user?.user_locations[0].place.location}</p>
+            <h2>Location born in</h2>
+            <p>{user?.user_locations[1].place.location}</p>
+            <h2>Location parents are from</h2>
+            <p>{user?.user_locations[2].place.location}</p>
             <Link to="/survey">
-                <button className="survey-button" onClick={surveyLink()}>Take survey</button>
+                <button className="survey-button" onClick={surveyLink()}>Take or update dialect survey</button>
             </Link>
         </div>
     )

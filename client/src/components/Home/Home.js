@@ -37,6 +37,7 @@ function Home( {errors, setErrors, properties, selectedPlace, setSelectedPlace})
 
     return(
     <div>
+        <h2>Click on a map marker to see all users' survey results for that place</h2>
         <MapContainer center={[0, 0]} zoom={1} scrollWheelZoom={true} className = "map">
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

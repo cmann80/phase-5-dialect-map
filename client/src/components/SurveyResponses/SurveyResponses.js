@@ -17,7 +17,6 @@ useEffect(() => {
     .then(res => {
         if(res.ok){
             res.json().then(responseData => {
-                console.log(responseData)
             setResponses(responseData)
             })
         } 
@@ -37,7 +36,6 @@ useEffect(() => {
             console.log(response)
             return response.user.user_locations.map(user_location => {
                 console.log(user_location.place)
-                console.log(placeName)
                 
                 function renderType(){
                     if (user_location.location_type ==="now"){
