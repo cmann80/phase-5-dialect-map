@@ -18,18 +18,20 @@ function NavBar ({ user, setUser }) {
 
 const loginSwitch = () => {
     if(user){
-        return (<div className="user-options">
-            <p>Welcome, {user.username}!</p>
-            <Link to="profile">Profile</Link>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
-        </div>)
+        return (
+        <>
+            <li>Welcome, {user.username}!</li>
+            <li><Link to="profile">Profile</Link></li>
+            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
+        </>
+            )
         }
     else
         {return(
-        <div className="user-options">
-            <Link to="signup">Signup</Link>
-            <Link to="login">Login</Link>
-        </div>
+        <>
+            <li><Link to="signup">Signup</Link></li>
+            <li><Link to="login">Login</Link></li>
+        </>
         )
     }
 

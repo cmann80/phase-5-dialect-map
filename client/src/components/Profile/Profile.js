@@ -11,9 +11,6 @@ function Profile ({user, setUser, errors, setErrors}){
     const params = useParams()
 
 
-    const [nowLocation, setNowLocation] = useState("")
-    const [bornLocation, setBornLocation] = useState("")
-    const [parentsLocation, setParentsLocation] = useState("")
 
     // on clicking the take survey button, creates a new survey entry in the survey table if one doesn't exist and takes the user to the survey page
     function surveyLink(){
