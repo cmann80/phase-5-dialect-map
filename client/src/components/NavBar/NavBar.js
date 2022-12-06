@@ -21,7 +21,7 @@ const loginSwitch = () => {
         return (
         <>
             <li>Welcome, {user.username}!</li>
-            <li><Link to="profile">Profile</Link></li>
+            <li><Link to={`/profile`}>Profile</Link></li>
             <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
         </>
             )
@@ -42,7 +42,7 @@ const loginSwitch = () => {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li>{loginSwitch()}</li>
+                {loginSwitch()}
             </ul>
         </div>
     )

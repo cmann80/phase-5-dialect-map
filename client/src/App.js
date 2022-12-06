@@ -125,7 +125,7 @@ if(errors) return <h1>{errors}</h1>
             <Route path="/signup" element={<Signup errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
             <Route path="/login" element={<Login errors={errors} setErrors={setErrors} setUser={setUser}/>}/>
             <Route path="/survey" element={<Survey errors={errors} setErrors={setErrors} user={user} setUser={setUser} questionArray={questionArray}/>}/>
-            <Route path="/profile" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
+            <Route path="/profile/" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
             <Route path="/survey_responses/:placeName" element={<SurveyResponses errors={errors} setErrors={setErrors} survey={survey} userLocations={userLocations}/>}/>
             <Route path="/about" element={<About/>}/>
         </Routes>

@@ -125,6 +125,7 @@ function handleSubmitAll(e){
                 res.json().then((data) => {
                     console.log(data)
                     setUser(currUser => ({...currUser, response: data}))
+                    navigate(`/profile`)
                 })
             } else {
                 res.json().then((err) => setErrors(err.errors))

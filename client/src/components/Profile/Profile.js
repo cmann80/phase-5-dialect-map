@@ -15,14 +15,14 @@ function Profile ({user, setUser, errors, setErrors}){
     // on clicking the take survey button, creates a new survey entry in the survey table if one doesn't exist and takes the user to the survey page
     function surveyLink(){
     
-        if (!user?.response){
+        if (user?.id && !user?.response){
             fetch("/responses", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body:JSON.stringify({ 
-                user_id: user.id,
+                user_id: user?.id,
                 r1: null,
                 r2: null,
                 r3: null,
@@ -65,7 +65,7 @@ function Profile ({user, setUser, errors, setErrors}){
             <h2>Location parents are from</h2>
             <p>{user?.user_locations[2].place.location}</p>
             <Link to="/survey">
-                <button className="survey-button" onClick={surveyLink()}>Take or update dialect survey</button>
+                <button className="survey-button" onClick={surveyLink}>Take or update dialect survey</button>
             </Link>
         </div>
     )

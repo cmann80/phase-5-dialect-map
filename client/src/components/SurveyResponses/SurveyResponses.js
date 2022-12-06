@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import {useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
 import { map } from 'leaflet';
+import "./SurveyResponses.css"
+
 
 function SurveyResponses({userLocations, survey, errors, setErrors}){
 
@@ -17,6 +19,7 @@ useEffect(() => {
     .then(res => {
         if(res.ok){
             res.json().then(responseData => {
+                console.log(responseData)
             setResponses(responseData)
             })
         } 
@@ -33,23 +36,22 @@ useEffect(() => {
         return responses.map(response => {
 
 
-            console.log(response)
             return response.user.user_locations.map(user_location => {
-                console.log(user_location.place)
-                
                 function renderType(){
                     if (user_location.location_type ==="now"){
+                        console.log(`now place ${user_location.place.location}`)
                         return  (<td>User lives there now</td>)
                     }
                     else if (user_location.location_type === "born"){
+                        console.log(`born place ${user_location.place.location}`)
                         return <td>user was born there</td>
                     }
                     else {
+                        console.log(`parents place ${user_location.place.location}`)
                         return <td>user's parents were born there</td>
                     }
                 }
                 if(user_location.place.location === placeName){
-
                     return (
                     <tr>
                     <td>{response.user.username}</td>
@@ -95,6 +97,7 @@ useEffect(() => {
             </tr>
                 {generateTable()}
         </table>
+        <p>To add your own data, fill out the survey through the profile page.</p>
 
     <Link to="/">back to home</Link>
 </div>)
