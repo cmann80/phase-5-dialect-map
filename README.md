@@ -1,24 +1,10 @@
-# README
+# Dialect Map
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app will allow users to 
 
-Things you may want to cover:
+1. create an account
+2. write where they live now, where they were born, and where their parents are from (may be expanded someday)
+3. complete a survey of yes/no questions about how they speak in their speech community
+4. see their, and other users' results, through map markers on a world map
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+uses OpenStreetMap and GeoAmpify geocoding.
