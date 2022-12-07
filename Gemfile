@@ -38,6 +38,8 @@ gem "bootsnap", require: false
 
 gem "faker"
 
+gem "pg"
+
 gem 'bcrypt'
 
 gem 'active_model_serializers'
