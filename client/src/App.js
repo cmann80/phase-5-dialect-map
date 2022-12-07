@@ -66,7 +66,6 @@ function App() {
 
   // // converts place names into map coordinates
     function geocoder(placeName){
-        console.log("geocoder")
         fetch(`https://api.geoapify.com/v1/geocode/search?text=${placeName}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
         .then(response => response.json())
         .then(result => {
