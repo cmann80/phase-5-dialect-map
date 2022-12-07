@@ -123,11 +123,11 @@ if(errors) return <h1>{errors}</h1>
         <NavBar user={user} setUser={setUser} className="navbar"/>
             <Routes>
             <Route path= "/" element={<Home selectedPlace = {selectedPlace} setSelectedPlace={setSelectedPlace} properties={properties}/>}/>
-            <Route path="/signup" element={<Signup errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
-            <Route path="/login" element={<Login errors={errors} setErrors={setErrors} setUser={setUser}/>}/>
-            <Route path="/survey" element={<Survey errors={errors} setErrors={setErrors} user={user} setUser={setUser} questionArray={questionArray}/>}/>
-            <Route path="/profile/" element={<Profile errors={errors} setErrors={setErrors} user={user} setUser={setUser}/>}/>
-            <Route path="/survey_responses/:placeName" element={<SurveyResponses errors={errors} setErrors={setErrors} survey={survey} userLocations={userLocations}/>}/>
+            <Route path="/signup" element={<Signup user={user} setUser={setUser}/>}/>
+            <Route path="/login" element={<Login setUser={setUser}/>}/>
+            <Route path="/survey" element={<Survey user={user} setUser={setUser} questionArray={questionArray}/>}/>
+            <Route path="/profile/" element={<Profile user={user} setUser={setUser}/>}/>
+            <Route path="/survey_responses/:placeName" element={<SurveyResponses survey={survey} userLocations={userLocations}/>}/>
             <Route path="/about" element={<About/>}/>
         </Routes>
         </BrowserRouter>

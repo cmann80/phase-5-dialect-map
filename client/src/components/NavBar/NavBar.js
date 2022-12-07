@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
@@ -6,7 +6,7 @@ import './NavBar.css';
 
 function NavBar ({ user, setUser }) {
 
-
+    const [errors, setErrors] = useState([]);
     const navigate = useNavigate()
 
     function handleLogout() {
@@ -40,7 +40,9 @@ const loginSwitch = () => {
     }
 
 }
-
+const errorMessage = errors.map((err) => {
+    return (<li key={err}>{err}</li>)
+})
 
     return (
         <div className='topnav'>
@@ -50,6 +52,7 @@ const loginSwitch = () => {
                 <li><Link to="/about">About</Link></li>
                 {loginSwitch()}
             </ul>
+            <ul>{errorMessage}</ul>
         </div>
     )
 }

@@ -3,9 +3,10 @@ import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
 
 
-function Survey({questionArray, user, setUser, errors, setErrors}){
+function Survey({questionArray, user, setUser}){
 
     const navigate = useNavigate();
+    const [errors, setErrors] = useState([]);
 
     //state for what question is currently on the page
     // const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -132,6 +133,11 @@ function handleSubmitAll(e){
             }
         })
     }  
+
+
+    const errorMessage = errors.map((err) => {
+        return (<li key={err}>{err}</li>)
+    })
 
     return(
         <div className ="question-section">
@@ -317,6 +323,7 @@ function handleSubmitAll(e){
                 /><br/>
                 <input type= "submit"/>
             </form>
+            <ul>{errorMessage}</ul>
         </div>
     )
 }
