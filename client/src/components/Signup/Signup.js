@@ -88,11 +88,13 @@ function Signup({setUser}){
 
     return(
         <div className="login-container">
-            <h2>Signup</h2>
-            <h2>Please choose a username that is not personally identifiable</h2>
+            <h2>Sign Up</h2>
+            <p>Choose a username that is not personally identifiable.</p> 
+            <p>For your locations, you can enter cities, states, regions, countries, almost anything.</p>
             <form onSubmit={handleSubmit}>
                 <div class="container>">
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Username</label>
+                    <br/>
                     <input
                         type="text"
                         id="username"
@@ -102,7 +104,8 @@ function Signup({setUser}){
                     /><br/>
 
 
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password</label>
+                    <br/>
                     <input
                         type="password"
                         id="password"
@@ -111,7 +114,8 @@ function Signup({setUser}){
                         onChange={(e) => setPassword(e.target.value)}
                     /><br/>
 
-                    <label htmlFor="password_confirmation">Confirm Password:</label>
+                    <label htmlFor="password_confirmation">Confirm Password</label>
+                    <br/>
                     <input
                         type="password"
                         id="password_confirmation"
@@ -121,27 +125,30 @@ function Signup({setUser}){
                     /><br/>
 
                     <label>Where do you live now?</label>
+                    <br/>
                     <input 
                         type= "text" 
                         name="locationNow"
-                        placeholder="Denver"
+                        placeholder="Ex. Denver"
                         value={locations.places[0].location}
                         onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0], location: e.target.value},{...currLocations.places[1]},{...currLocations.places[2]}]}))}
                     /><br/>
 
                     <label>Where  did you grow up?</label>
+                    <br/>
                     <input 
                         type= "text" 
                         name="locationGrewUp"
-                        placeholder="Buffalo"
+                        placeholder="Ex. Chennai, Tamil Nadu"
                         value={locations.places[1].location}
                         onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0]},{...currLocations.places[1], location: e.target.value},{...currLocations.places[2]}]}))}
                     /><br/>
                     <label>Where are your parents from?</label>
+                    <br/>
                     <input
                         type= "text" 
                         name="locationParents"
-                        placeholder="Taipei"
+                        placeholder="Ex. Taiwan"
                         value={locations.places[2].location}
                         onChange={(e) => setLocations(currLocations => ({places:[{...currLocations.places[0]},{...currLocations.places[1]},{...currLocations.places[2], location: e.target.value}]}))}
                     /><br/> 

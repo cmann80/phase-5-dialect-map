@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
+import "./Login.css"
 
 function Login ({ setUser }) {
     const [username, setUsername] = useState("");
@@ -33,23 +34,27 @@ function Login ({ setUser }) {
     })
 
     return (
-        <div>
-
+        <div className="login">
+            <h2>Log In</h2>
             <form onSubmit={handleSubmit}>
-                <label className="label" htmlFor="username">Username:</label>
+                <label className="label" htmlFor="username">Username</label>
+                <br/>
                 <input
                     type="text"
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <label className="label" htmlFor="password">Password:</label>
+                <br/>
+                <label className="label" htmlFor="password">Password</label>
+                <br/>
                 <input
                     type="password"
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <br/>
                 <button type="submit">Login</button>
             </form>
 
