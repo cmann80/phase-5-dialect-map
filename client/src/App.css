@@ -3,6 +3,9 @@
 
 }
 
+button:hover {
+  opacity:1;
+}
 
 .App-header {
   background-color: #282c34;
@@ -42,3 +45,4 @@
   background-color: #ddd;
   color: black;
 }
+

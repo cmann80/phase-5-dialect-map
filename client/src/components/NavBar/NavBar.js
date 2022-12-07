@@ -1,4 +1,3 @@
-import { DivOverlay } from 'leaflet';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
@@ -41,6 +40,8 @@ const loginSwitch = () => {
     }
 
 }
+
+
     return (
         <div className='topnav'>
             <h1>Dialect Map</h1>

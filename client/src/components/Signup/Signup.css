@@ -1,0 +1,16 @@
+/* Add padding to container elements */
+.container {
+    padding: 1000px;
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(124, 124, 124);
+  }
+
+
+
