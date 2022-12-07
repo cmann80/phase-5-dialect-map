@@ -36,3 +36,4 @@
 
 # api keys
 /client/.env
+node_modules
