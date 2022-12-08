@@ -89,7 +89,7 @@ function Signup({setUser}){
     return(
         <div className="login-container">
             <h2>Sign Up</h2>
-            <h3>Choose a username that is not personally identifiable, such as your name or email address.</h3> 
+            <h3>Choose a username that is not personally identifiable. Do not use your name or email address.</h3> 
             <p>For your locations, you can enter cities, states, regions, countries, almost anything.</p>
             <form onSubmit={handleSubmit}>
                 <div className="container>">
