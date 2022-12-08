@@ -33,7 +33,7 @@ const loginSwitch = () => {
     else
         {return(
         <>
-            <li><Link to="signup">Signup</Link></li>
+            <li><Link to="signup">Sign Up</Link></li>
             <li><Link to="login">Login</Link></li>
         </>
         )
