@@ -6,7 +6,7 @@ User.destroy_all
 UserLocation.destroy_all
 Place.destroy_all
 Response.destroy_all
-Survey.destroy_all
+
 
 puts "seeding survey questions"
 
@@ -21,6 +21,8 @@ Survey.create(
     q8: "Do you pronounce the 'h' in 'herb?", 
     q9: "Do you call a round thing in the middle of a street intersection a 'roundabout'?", 
     q10: "Do you call high speed roads that go across the country a 'freeway'?")
+
+    
 
 def yesno
     var = rand 0..1
