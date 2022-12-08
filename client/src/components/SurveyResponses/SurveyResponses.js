@@ -19,7 +19,7 @@ useEffect(() => {
     .then(res => {
         if(res.ok){
             res.json().then(responseData => {
-                console.log(responseData)
+                // console.log(responseData)
             setResponses(responseData)
             })
         } 
@@ -39,16 +39,16 @@ useEffect(() => {
             return response.user.user_locations.map(user_location => {
                 function renderType(){
                     if (user_location.location_type === "now"){
-                        console.log(`now place ${user_location.place.location}`)
+                        // console.log(`now place ${user_location.place.location}`)
                         return  (<td>User lives there now</td>)
                     }
                     else if (user_location.location_type === "born"){
-                        console.log(`born place ${user_location.place.location}`)
+                        // console.log(`born place ${user_location.place.location}`)
                         return (<td>user was born there</td>)
                     }
                     else {
                         console.log(`parents place ${user_location.place.location}`)
-                        return (<td>user's parents were born there</td>)
+                        // return (<td>user's parents were born there</td>)
                     }
                 }
                 if(user_location.place.location === placeName){
