@@ -1,5 +1,13 @@
 require 'faker'
 
+puts "destroying database"
+
+User.destroy_all
+UserLocation.destroy_all
+Place.destroy_all
+Response.destroy_all
+Survey.destroy_all
+
 puts "seeding survey questions"
 
 Survey.create(
@@ -16,7 +24,6 @@ Survey.create(
 
 def yesno
     var = rand 0..1
-    puts var
     if var == 0
         "no"
     else
