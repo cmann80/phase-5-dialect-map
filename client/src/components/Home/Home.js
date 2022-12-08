@@ -11,7 +11,7 @@ function Home( {properties}){
 
     // renders markers and their popups on the map
     function renderMarkers(){
-        // console.log(markers)
+
         return properties.map(property  =>{
             // console.log(property)
             return (<Marker key = {property.place_id} 

@@ -47,8 +47,8 @@ useEffect(() => {
                         return (<td>user was born there</td>)
                     }
                     else {
-                        console.log(`parents place ${user_location.place.location}`)
-                        // return (<td>user's parents were born there</td>)
+                        // console.log(`parents place ${user_location.place.location}`)
+                        return (<td>user's parents were born there</td>)
                     }
                 }
                 if(user_location.place.location === placeName){
