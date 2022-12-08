@@ -21,8 +21,8 @@ function Home( {properties}){
 
 
                     >
-                        <Popup id= {property.formatted} >
-                        {property.formatted}<br/>
+                        <Popup >
+                        {property.placeName}<br/>
 
                         <Link to={`/survey_responses/${property.placeName}`} property={property}>Survey Responses for this place</Link>
                         </Popup>

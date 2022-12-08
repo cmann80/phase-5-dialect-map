@@ -70,7 +70,7 @@ function App() {
         .then(response => response.json())
         .then(result => {
         if (result.features.length > 0){
-            console.log(result)
+            // console.log(result)
             setProperties((properties) => [...properties, {...result.features[0].properties, placeName}])
         }
         })
