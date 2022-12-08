@@ -34,7 +34,7 @@ function Signup({setUser}){
         ]
     })
 
-    console.log(locations)
+    // console.log(locations)
 
     const navigate = useNavigate();
 
@@ -80,7 +80,7 @@ function Signup({setUser}){
     }
 
     const errorMessage = errors.map((err) => {
-        console.log(err)
+        // console.log(err)
         return (<li key={err}>{err}</li>)
     })
 
