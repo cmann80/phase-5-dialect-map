@@ -5,7 +5,7 @@ import { map } from 'leaflet';
 import "./SurveyResponses.css"
 
 
-function SurveyResponses({userLocations, survey, errors, setErrors}){
+function SurveyResponses({ survey, setErrors}){
 
 let {placeName} = useParams()
 
